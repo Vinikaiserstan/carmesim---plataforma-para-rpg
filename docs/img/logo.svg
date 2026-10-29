@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="40" fill="#140808"/>
+  <!-- páginas -->
+  <rect x="68" y="52" width="130" height="164" rx="6" fill="#e9dcc3"/>
+  <rect x="68" y="60" width="130" height="3" fill="#cdbf9f"/>
+  <!-- capa -->
+  <rect x="58" y="44" width="130" height="164" rx="8" fill="#9b1c1c"/>
+  <rect x="58" y="44" width="22" height="164" rx="8" fill="#6e1010"/>
+  <rect x="68" y="56" width="108" height="140" rx="4" fill="none" stroke="#c9a04a" stroke-width="2" opacity="0.8"/>
+  <!-- emblema: olho (conhecimento proibido) -->
+  <path d="M88 104 Q126 70 164 104 Q126 138 88 104 Z" fill="none" stroke="#c9a04a" stroke-width="3"/>
+  <circle cx="126" cy="104" r="12" fill="#c9a04a"/>
+  <circle cx="126" cy="104" r="5" fill="#9b1c1c"/>
+  <!-- cinta de selo -->
+  <rect x="58" y="148" width="130" height="16" fill="#140808"/>
+  <rect x="58" y="151" width="130" height="2" fill="#3a1a1a"/>
+  <rect x="58" y="159" width="130" height="2" fill="#3a1a1a"/>
+  <!-- cadeado -->
+  <path d="M112 148 v-8 a14 14 0 0 1 28 0 v8" fill="none" stroke="#c9a04a" stroke-width="5"/>
+  <rect x="104" y="148" width="44" height="34" rx="6" fill="#c9a04a"/>
+  <circle cx="126" cy="162" r="5" fill="#140808"/>
+  <rect x="124" y="162" width="4" height="12" fill="#140808"/>
+</svg>
