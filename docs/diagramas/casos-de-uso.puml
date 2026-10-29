@@ -1,0 +1,77 @@
+@startuml casos-de-uso
+title Carmesim — Diagrama de Casos de Uso
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FBEFEF
+  BorderColor #8B1A1A
+  ArrowColor #444444
+}
+skinparam actor {
+  BorderColor #8B1A1A
+}
+skinparam rectangle {
+  BorderColor #8B1A1A
+}
+
+actor "Jogador" as JO
+actor "Mestre" as ME
+actor "Moderador" as MO
+actor "Administrador" as AD
+
+rectangle "Carmesim — Plataforma de Suporte a Comunidades de RPG" {
+  usecase "UC01\nAutenticar usuário" as UC01
+  usecase "UC02\nRegistrar conta" as UC02
+  usecase "UC03\nGerenciar usuários e perfis" as UC03
+
+  usecase "UC04\nGerenciar personagem" as UC04
+  usecase "UC05\nRevisar personagem" as UC05
+
+  usecase "UC06\nGerenciar campanha" as UC06
+  usecase "UC07\nConvidar jogador\npara campanha" as UC07
+  usecase "UC08\nResponder convite\nde campanha" as UC08
+
+  usecase "UC09\nAgendar sessão" as UC09
+  usecase "UC10\nConfirmar presença\nem sessão" as UC10
+  usecase "UC11\nEncerrar sessão\ne distribuir XP" as UC11
+  usecase "UC18\nAvaliar participantes\nda sessão" as UC18
+
+  usecase "UC12\nPublicar missão" as UC12
+  usecase "UC13\nAceitar missão" as UC13
+  usecase "UC14\nConcluir missão e\ndistribuir recompensa" as UC14
+
+  usecase "UC15\nParticipar do mural\n(publicar e comentar)" as UC15
+  usecase "UC16\nDenunciar publicação" as UC16
+  usecase "UC17\nModerar denúncia" as UC17
+}
+
+JO --> UC01
+ME --> UC01
+MO --> UC01
+AD --> UC01
+
+JO --> UC02
+JO --> UC04
+JO --> UC08
+JO --> UC10
+JO --> UC13
+JO --> UC15
+JO --> UC18
+
+ME --> UC05
+ME --> UC06
+ME --> UC07
+ME --> UC09
+ME --> UC11
+ME --> UC12
+ME --> UC14
+ME --> UC15
+ME --> UC18
+
+MO --> UC17
+AD --> UC03
+
+UC16 .> UC15 : <<extend>>
+JO --> UC16
+@enduml
