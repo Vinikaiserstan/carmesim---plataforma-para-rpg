@@ -7,10 +7,7 @@
 **Disciplina:** Análise e Projeto de Sistemas · Instituto Federal do Piauí
 
 ## Integrantes
-- Nome 1
-- Nome 2
-- Nome 3
-- Nome 4
+- Vinicius Neiva Teixeira
 
 ## Tecnologias
 Java 21 · JavaFX · SQLite (sqlite-jdbc) · JDBC · Maven
