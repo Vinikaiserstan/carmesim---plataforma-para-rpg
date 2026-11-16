@@ -7,7 +7,10 @@
 **Disciplina:** Análise e Projeto de Sistemas · Instituto Federal do Piauí
 
 ## Integrantes
-- Vinicius Neiva Teixeira
+- Nome 1
+- Nome 2
+- Nome 3
+- Nome 4
 
 ## Tecnologias
 Java 21 · JavaFX · SQLite (sqlite-jdbc) · JDBC · Maven
@@ -21,9 +24,13 @@ cd carmesim
 mvn javafx:run
 ```
 
-O arquivo `carmesim.db` (SQLite) é criado automaticamente na primeira execução.
+Na semana 1 o sistema abre apenas uma tela vazia. A criação automática do banco SQLite (`carmesim.db`) na primeira execução será implementada junto com as primeiras entregas de código.
 
 ## Documentação
 - [Casos de uso](docs/casos-de-uso.md)
 - [Histórias de usuário (Product Backlog)](docs/historias-de-usuario.md)
 - Diagrama: [PNG](docs/diagramas/casos-de-uso.png) · [fonte PlantUML](docs/diagramas/casos-de-uso.puml)
+- [Entrega 2: classes, atividades e pacotes](docs/entrega-2.md)
+  - Classes: [PNG](docs/diagramas/classes.png) · [fonte](docs/diagramas/classes.puml)
+  - Atividades (UC11): [PNG](docs/diagramas/atividades-uc11.png) · [fonte](docs/diagramas/atividades-uc11.puml)
+  - Pacotes: [PNG](docs/diagramas/pacotes.png) · [fonte](docs/diagramas/pacotes.puml)

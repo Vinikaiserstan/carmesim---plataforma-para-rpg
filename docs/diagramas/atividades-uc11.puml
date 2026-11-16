@@ -1,0 +1,28 @@
+@startuml atividades-uc11
+title Carmesim — Diagrama de Atividades: UC11 Encerrar sessão e distribuir XP
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #FBEFEF
+  BorderColor #8B1A1A
+  DiamondBackgroundColor #FFFFFF
+}
+start
+:Iniciar sessão\n(status Em andamento);
+:Encerrar sessão;
+:Marcar presentes;
+if (Há presentes?) then ([não])
+  :Encerrar sem XP;
+else ([sim])
+  repeat
+    :Informar XP e resumo;
+  repeat while (XP maior que zero?) is ([não]) not ([sim])
+  fork
+    :Distribuir XP aos presentes;
+    :Recalcular níveis (RN04);
+  fork again
+    :Liberar avaliações (UC18);
+  end fork
+endif
+:Marcar sessão como Encerrada;
+stop
+@enduml
