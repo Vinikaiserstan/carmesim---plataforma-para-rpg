@@ -1,0 +1,29 @@
+@startuml pacotes
+title Carmesim — Diagrama de Pacotes
+skinparam shadowing false
+skinparam package {
+  BackgroundColor #FBEFEF
+  BorderColor #8B1A1A
+}
+skinparam ArrowColor #444444
+
+package "ui" as ui {
+}
+package "servico" as servico {
+}
+package "seguranca" as seguranca {
+}
+package "persistencia" as persistencia {
+}
+package "dominio" as dominio {
+}
+
+ui ..> servico
+ui ..> seguranca
+ui ..> dominio
+servico ..> seguranca
+servico ..> persistencia
+servico ..> dominio
+persistencia ..> dominio
+seguranca ..> dominio
+@enduml

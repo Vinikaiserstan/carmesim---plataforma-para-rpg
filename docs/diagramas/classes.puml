@@ -1,0 +1,177 @@
+@startuml classes
+title Carmesim — Diagrama de Classes (domínio)
+hide circle
+hide empty members
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #FBEFEF
+  BorderColor #8B1A1A
+  ArrowColor #444444
+}
+skinparam nodesep 60
+skinparam ranksep 70
+
+class Usuario {
+  -id: int
+  -nome: String
+  -login: String
+  -email: String
+  -senhaHash: String
+  -ativo: boolean
+  -perfis: Set<Perfil>
+  --
+  +possuiPerfil(perfil: Perfil): boolean
+  +autenticar(senhaHash: String): boolean
+  +calcularReputacao(avaliacoes: List<Avaliacao>): double
+}
+class Personagem {
+  -id: int
+  -nome: String
+  -classe: String
+  -nivel: int
+  -xp: int
+  -ouro: int
+  -atributos: String
+  -historia: String
+  -observacaoRevisao: String
+  -status: StatusPersonagem
+  --
+  +enviarParaRevisao(): void
+  +aprovar(): void
+  +devolver(motivo: String): void
+  +estaAprovado(): boolean
+  +ganharXp(quantidade: int): void
+  +creditarOuro(quantidade: int): void
+}
+class Campanha {
+  -id: int
+  -nome: String
+  -descricao: String
+  -limiteVagas: int
+  -minimoPresencas: int
+  -arquivada: boolean
+  --
+  +vagasOcupadas(): int
+  +temVaga(): boolean
+  +arquivar(): void
+}
+class Participacao {
+  -id: int
+  -status: StatusConvite
+  --
+  +aceitar(personagem: Personagem): void
+  +recusar(): void
+  +expirar(): void
+}
+class Sessao {
+  -id: int
+  -titulo: String
+  -inicio: LocalDateTime
+  -duracaoMin: int
+  -status: StatusSessao
+  -xpConcedido: int
+  -resumo: String
+  --
+  +confirmarPresenca(participacao: Participacao, vai: boolean): void
+  +atingiuQuorum(minimo: int): boolean
+  +atualizarQuorum(minimo: int): void
+  +iniciar(): void
+  +encerrar(xp: int, resumo: String): void
+  +cancelar(): void
+  +avaliacoesLiberadas(): boolean
+}
+class Presenca {
+  -id: int
+  -confirmada: boolean
+  -compareceu: boolean
+  --
+  +confirmar(vai: boolean): void
+  +registrarComparecimento(compareceu: boolean): void
+}
+class Missao {
+  -id: int
+  -titulo: String
+  -descricao: String
+  -dificuldade: int
+  -recompensaOuro: int
+  -maxPersonagens: int
+  -status: StatusMissao
+  --
+  +aceitar(personagem: Personagem): void
+  +iniciar(): void
+  +dividirOuro(): void
+  +concluir(sucesso: boolean): void
+}
+class ParticipacaoMissao {
+  -id: int
+  -ordemAceite: int
+  -ouroRecebido: int
+}
+class Publicacao {
+  -id: int
+  -texto: String
+  -dataHora: LocalDateTime
+  -visivel: boolean
+  -removida: boolean
+  --
+  +comentar(comentario: Comentario): void
+  +denunciar(denuncia: Denuncia): void
+  +ocultar(): void
+  +reexibir(): void
+  +remover(): void
+}
+class Comentario {
+  -id: int
+  -texto: String
+  -dataHora: LocalDateTime
+}
+class Denuncia {
+  -id: int
+  -motivo: String
+  -detalhe: String
+  -status: StatusDenuncia
+  --
+  +marcarProcedente(): void
+  +marcarImprocedente(): void
+}
+class Avaliacao {
+  -id: int
+  -nota: int
+  -comentario: String
+  --
+  +notaValida(): boolean
+  +validar(): void
+}
+
+Personagem --> "1 jogador" Usuario
+Campanha --> "1 mestre" Usuario
+Campanha --> "* participacoes" Participacao
+Campanha --> "* sessoes" Sessao
+Campanha --> "* missoes" Missao
+Participacao --> "1 jogador" Usuario
+Participacao --> "0..1 personagem" Personagem
+Sessao --> "* presencas" Presenca
+Presenca --> "1 participacao" Participacao
+Missao --> "* participantes" ParticipacaoMissao
+ParticipacaoMissao --> "1 personagem" Personagem
+Publicacao --> "1 autor" Usuario
+Publicacao --> "* comentarios" Comentario
+Publicacao --> "* denuncias" Denuncia
+Comentario --> "1 autor" Usuario
+Denuncia --> "1 denunciante" Usuario
+Avaliacao --> "1 sessao" Sessao
+Avaliacao --> "1 avaliador" Usuario
+Avaliacao --> "1 avaliado" Usuario
+
+Sessao ..> Personagem : <<call>>
+Missao ..> Personagem : <<call>>
+Usuario ..> Avaliacao : <<call>>
+
+note as N1
+Esboço conforme o Cap. 4 do livro: associações aparecem como setas com
+multiplicidade e nome do atributo; getters e setters foram omitidos.
+Enumerações: Perfil, StatusPersonagem, StatusConvite, StatusSessao,
+StatusMissao e StatusDenuncia (valores no código).
+end note
+@enduml
